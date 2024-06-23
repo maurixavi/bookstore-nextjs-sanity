@@ -3,6 +3,7 @@ import '../../app/globals.css';
 import { Navbar, Product } from '../../components';
 
 import { client, urlFor } from '../../app/lib/client';
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart } from 'react-icons/ai';
 
 const ProductDetails = ({ product, products }) => {
   return (
@@ -18,11 +19,30 @@ const ProductDetails = ({ product, products }) => {
             />
           </div>
           <div className="w-3/4 p-4 flex flex-col items-start">
-            <h1 className="text-xl font-bold mb-2">{product.name}</h1>
+            <h1 className="text-3xl font-semibold mb-2">{product.name}</h1>
 						<h1 className="mb-4 font-medium">Author</h1>
-            <p className="text-2xl font-semibold mb-4">${product.price}</p>
-            <p className="text-gray-700 text-sm font-light">{product.details}</p>
+            <p className="text-2xl font-extrabold text-gray-700 mb-4">${product.price}</p>
+            <p className="text-gray-700 text-sm font-light mb-4">{product.details}</p>
+						<div className="flex items-center mt-4">
+              <span className="border border-gray-300 px-1 py-1" onClick="">
+                <AiOutlineMinus />
+              </span>
+              <span className="border border-gray-300 px-2">1</span>
+              <span className="border border-gray-300 px-1 py-1" onClick="">
+                <AiOutlinePlus />
+              </span>
+							<div className="mx-4">
+							<button class="border-2 border-zinc-900 hover:bg-neutral-50 border-2 text-xs font-semibold py-2 px-4 tracking-wide  mx-4">
+							AGREGAR
+							</button>
+							<button class="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-4 tracking-wide">
+							COMPRAR
+							</button>
+						</div>
+            </div>
+						
           </div>
+					
         </div>
       </div>
     </div>
