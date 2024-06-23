@@ -51,7 +51,7 @@ body{
 .product-card {
   width: 184px;
   /*border: 1px solid #eaeaea;*/
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   overflow: hidden;
   text-align: left;
   transition: transform 0.2s;
@@ -64,7 +64,7 @@ body{
 .product-image {
   width: 184px;
   height: 280px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   border: 1px solid #eaeaea;
 }
 
