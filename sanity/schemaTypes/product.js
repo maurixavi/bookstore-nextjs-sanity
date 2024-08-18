@@ -18,6 +18,29 @@ export default {
 			type: 'string',
 		},
 		{
+			name: 'author',
+			title: 'Author',
+			type: 'string',
+		},
+		{
+			name: 'publisher',
+			title: 'Publisher',
+			type: 'string',
+		},
+		{
+			name: 'genres',
+			title: 'Genres',
+			type: 'array',
+			of: [{type: 'string'}]
+		},
+		{
+			name: 'subgenres',
+			title: 'SubGenres',
+			type: 'array',
+			of: [{type: 'string'}]
+		},
+		
+		{
 			name: 'slug',
 			title: 'Slug',
 			type: 'slug',
@@ -32,8 +55,8 @@ export default {
 			type: 'number',
 		},
 		{
-			name: 'details',
-			title: 'Details',
+			name: 'description',
+			title: 'Description',
 			type: 'string',
 		},
 	]
