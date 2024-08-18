@@ -14,6 +14,7 @@ const ProductDetails = ({ product, products }) => {
 
   return (
     <div>
+
       <div className="flex justify-center mt-6">
         <div className="bg-white max-w-6xl  flex mx-4">
           <div className="p-6 flex-shrink-0">
@@ -37,11 +38,13 @@ const ProductDetails = ({ product, products }) => {
                 <AiOutlinePlus />
               </span>
 							<div className="mx-4">
+                
 							<button 
                 class="border-2 border-zinc-900 hover:bg-neutral-50 border-2 text-xs font-semibold py-2 px-4 tracking-wide mx-4"
                 onClick={() => onAdd(product, quantity)}>
 							  AGREGAR
 							</button>
+
 							<button 
                 class="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-4 tracking-wide">
 							  COMPRAR
