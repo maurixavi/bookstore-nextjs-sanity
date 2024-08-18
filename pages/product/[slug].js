@@ -35,20 +35,19 @@ const ProductDetails = ({ product, products }) => {
                 <AiOutlinePlus />
               </span>
 							<div className="mx-4">
-							<button 
-                class="border-2 border-zinc-900 hover:bg-neutral-50 border-2 text-xs font-semibold py-2 px-4 tracking-wide mx-4"
-                onClick={() => onAdd(product, quantity)}>
-							  AGREGAR
-							</button>
-							<button 
-                class="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-4 tracking-wide">
-							  COMPRAR
-							</button>
-						</div>
+                <button 
+                  class="border-2 border-zinc-900 hover:bg-neutral-50 border-2 text-xs font-semibold py-2 px-4 tracking-wide mx-4"
+                  onClick={() => onAdd(product, quantity)}>
+                  AGREGAR
+                </button>
+                <button 
+                  class="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-4 tracking-wide">
+                  COMPRAR
+                </button>
+              </div>
             </div>
-						
           </div>
-					
+	
         </div>
       </div>
     </div>
