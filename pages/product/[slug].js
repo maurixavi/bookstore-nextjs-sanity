@@ -1,10 +1,8 @@
 import React from 'react';
 import '../../app/globals.css';
 import { Navbar, Product } from '../../components';
-
 import { client, urlFor } from '../../app/lib/client';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart } from 'react-icons/ai';
-
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
