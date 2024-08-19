@@ -12,32 +12,34 @@ const Navbar = () => {
 
 	return (
 		<header className="sticky top-0 z-50 p-2 mb-4 border-b bg-white shadow-slate-100">
-			<div className='flex items-center justify-between px-4'>
-			<Link href="/">
-						<img
-							src="../EntreLibrosLogo.png"
-							alt=""
-							width={180} 
-							height={50} 
-							className="object-contain" 
-						/>
-
+			<div className="max-w-screen-xl mx-auto flex items-center justify-between px-4">
+				<Link href="/">
+					<img
+						src="../EntreLibrosLogo.png"
+						alt=""
+						width={180} 
+						height={50} 
+						className="object-contain" 
+					/>
 				</Link>
 
 				<div className="flex items-center space-x-4">
-					<button type='button' className='cart-icon relative' onClick={() => setShowSearch(true)}>
+					<button 
+						type='button' 
+						className='relative ' 
+						onClick={() => setShowSearch(true)}>
 						<IoIosSearch  size={24} />
 					</button>
 
 					{showSearch && <Search />}
 
-					<button type='button' className='cart-icon relative' onClick={() => setShowCart(true)}>
+					<button type='button' className='relative' onClick={() => setShowCart(true)}>
 						<AiOutlineShopping size={24} />
 						<span className='cart-item-qty absolute bottom-2 left-4 flex items-center justify-center w-4 h-4 text-[9px] font-semibold text-white bg-red-500 rounded-full'>{totalQuantities}</span>
 					</button>
-					</div>
+				</div>
 				
-					{showCart && <Cart />}
+				{showCart && <Cart />}
 			</div>
 		</header>
 	)

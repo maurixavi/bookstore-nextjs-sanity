@@ -32,8 +32,8 @@ const Home = ({ products }) => {
   });
 
 	return (
-			<div>
-				<div className='px-14'>
+		<div className="max-w-screen-xl mx-auto px-4">
+				<div className=''>
 					<input
 						type="text"
 						placeholder='Buscar por título, autor, género o tematica...'
