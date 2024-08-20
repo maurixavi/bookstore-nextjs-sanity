@@ -8,7 +8,7 @@ import { useStateContext } from '../../context/StateContext';
 const ProductDetails = ({ product, products }) => {
 
   const { decQuantity, incQuantity, quantity, onAdd } = useStateContext();
-  console.log({ decQuantity, incQuantity, quantity });
+  //console.log({ decQuantity, incQuantity, quantity });
 
   return (
     <div>
