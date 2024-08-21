@@ -3,6 +3,10 @@ import Link from 'next/link'
 import { AiOutlineShopping } from 'react-icons/ai'
 import Navbar from './Navbar'
 
+export const metadata = {
+	title: "EntreLibros - Tienda Virtual"
+}
+
 const Layout = ({ children }) => {
 	return (
 		<div>
