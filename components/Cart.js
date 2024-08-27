@@ -4,11 +4,42 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 
 import { TiDeleteOutline } from 'react-icons/ti';
 import { AiOutlineDelete } from "react-icons/ai";
 import { useStateContext } from '../context/StateContext';
-import { client, urlFor } from '../app/lib/client';
+import { urlFor } from '../app/lib/client';
+import getStripe from '../app/lib/getStripe';
 
 const Cart = () => {
 	const cartRef = useRef();
   const { decQuantity, incQuantity, quantity, onAdd, onRemove, totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity } = useStateContext();
+
+	/* server action */
+	const handlePayment = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const totalPrice = formData.get('totalPrice');
+		//alert("IMPORTE: " + totalPrice)
+    console.log("Iniciando proceso de pago...");
+    console.log("Importe total:", totalPrice);
+
+  }
+
+  const handleCheckout = async () => {
+    console.log("HANDLE_CHECK", cartItems)
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }, 
+      body: JSON.stringify(cartItems)
+    });
+
+    if(response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  }
 
 	return (
 		<div className={`fixed inset-0 w-screen h-screen bg-black bg-opacity-50 z-[100] transition-all ease-in-out duration-1000`} ref={cartRef}>
@@ -43,13 +74,11 @@ const Cart = () => {
 							</button>
 						</Link>
 					</div>
-				)}
-
-				
+				)}		
 
 				{cartItems.length >= 1 && (
           <div className="flex flex-col h-full">
-            <div className="flex-1 overflow-y-auto pr-1 mb-[2px]"> {/* espacio reservado para la sección fija */}
+            <div className="flex-1 overflow-y-auto pr-1 mb-[2px]"> 
               {cartItems.map((item, index) => (
                 <div
                   key={item._id || index}
@@ -96,12 +125,16 @@ const Cart = () => {
               <div className="flex flex-col items-center">
                 <span className='font-semibold'>Importe total: ${totalPrice}
                 </span>
-                <button
-                  type='button'
-                  className="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-6 tracking-wide mt-4 uppercase"
-                  onClick={() => setShowCart(false)}>
-                  Finalizar Compra
-                </button>
+								<form onSubmit={handleCheckout}>
+									<input type="hidden" name="totalPrice" value={totalPrice} />
+									<button
+										type='button'
+										className="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-6 tracking-wide mt-4 uppercase"
+                    onClick={handleCheckout}
+									>
+										Finalizar Compra
+									</button>
+								</form>
                 <button
                   type='button'
                   className='pt-4 flex items-center gap-1'
