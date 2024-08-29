@@ -43,14 +43,13 @@ const Cart = () => {
 
 	return (
 		<div className={`fixed inset-0 w-screen h-screen bg-black bg-opacity-50 z-[100] transition-all ease-in-out duration-1000`} ref={cartRef}>
-  		<div className='relative w-[600px] h-full bg-white float-right p-[32px] pt-[10px]'>
-				<div
-
-					className='pt-4 flex items-center gap-2'
-				>
-					<span className='font-medium text-gray-600 tracking-tight'>Hay</span>
-					<span className='font-medium tracking-tight'>{totalQuantities} artículo (s)</span>
-					<span className='font-medium text-gray-600 tracking-tight'>en tu carrito</span>
+  		<div className='relative w-full max-w-[600px] h-full bg-white float-right p-[32px] pt-[10px]'>
+				<div className='pt-4 flex items-center justify-between gap-2'>
+					<div className="flex items-center gap-2">
+						<span className='font-medium text-gray-600 tracking-tight'>Hay</span>
+						<span className='font-medium tracking-tight'>{totalQuantities} artículo(s)</span>
+						<span className='font-medium text-gray-600 tracking-tight'>en tu carrito</span>
+					</div>
 					<button
 						type='button'
 						className='text-xl'
@@ -58,17 +57,16 @@ const Cart = () => {
 					>
 						<TiDeleteOutline />
 					</button>
-					
 				</div>
 
 				{cartItems.length < 1 && (
-      	<div className="flex flex-col items-center  h-full space-y-4">
-        	<AiOutlineShopping size={150} className="text-gray-700 mt-8 " />
-        	<h3 className="text-base font-semibold text-gray-700 mt-16">Tu carrito está vacio, agrega tus libros favoritos!</h3>
+      	<div className="flex flex-col items-center h-full space-y-4">
+        	<AiOutlineShopping size={150} className="text-gray-700 mt-8" />
+        	<h3 className="text-base font-semibold text-gray-700 mt-16 text-center">Tu carrito está vacío, agrega tus libros favoritos!</h3>
         		<Link href="/">
 							<button 
 								type='button'
-								class="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-6 tracking-wide mt-8 uppercase"
+								className="border-2 border-zinc-900 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold py-2 px-6 tracking-wide mt-8 uppercase"
 								onClick={() => setShowCart(false)}>
 									Continuar Comprando
 							</button>
@@ -94,7 +92,7 @@ const Cart = () => {
                         {item.name}
                       </a>
                       <span className="flex items-center text-sm font-medium text-right mr-2">${item.price}
-                        <span className="text-sm font-normal text-gray-600 "></span>
+                        <span className="text-sm font-normal text-gray-600"></span>
                         <button
                           type='button'
                           className="border-zinc-900 text-base ml-2 font-bold tracking-wide uppercase"
@@ -104,7 +102,7 @@ const Cart = () => {
                       </span>
                     </div>
                     <div className="flex items-center mt-4 mb-2">
-                      <p className="text-sm text-gray-600 mr-2 ">Cantidad: </p>
+                      <p className="text-sm text-gray-600 mr-2">Cantidad: </p>
                       <span className="border border-gray-300 px-1 py-1 text-xs" onClick={() => toggleCartItemQuantity(item._id, 'dec')}>
                         <AiOutlineMinus />
                       </span>
@@ -114,7 +112,7 @@ const Cart = () => {
                       </span>
                     </div>
                     <span className='mb-4'>
-                      <span className="text-sm text-gray-600 mr-2 ">Subtotal:</span><span className="text-sm text-gray-600 mr-2 ">${item.quantity * item.price} ({item.quantity} x ${item.price})</span>
+                      <span className="text-sm text-gray-600 mr-2">Subtotal:</span><span className="text-sm text-gray-600 mr-2">${item.quantity * item.price} ({item.quantity} x ${item.price})</span>
                     </span>
                   </div>
                 </div>
@@ -123,8 +121,7 @@ const Cart = () => {
 
             <div className="sticky bottom-0 left-0 w-full border-t bg-white px-4 py-8">
               <div className="flex flex-col items-center">
-                <span className='font-semibold'>Importe total: ${totalPrice}
-                </span>
+                <span className='font-semibold'>Importe total: ${totalPrice}</span>
 								<form onSubmit={handleCheckout}>
 									<input type="hidden" name="totalPrice" value={totalPrice} />
 									<button
@@ -141,7 +138,7 @@ const Cart = () => {
                   onClick={() => setShowCart(false)}
                 >
                   <AiOutlineLeft className='text-sm font-medium text-gray-600' />
-                  <span className='text-sm font-medium text-gray-600 '>Cerrar y continuar comprando</span>
+                  <span className='text-sm font-medium text-gray-600'>Cerrar y continuar comprando</span>
                 </button>
               </div>
             </div>
