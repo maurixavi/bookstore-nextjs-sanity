@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-//import { toast } from 'react-hot-tost';
+//import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 const Context = createContext();
 
@@ -12,6 +13,14 @@ export const StateContext = ({ children }) => {
 
 	let foundProduct;
 	let index;
+
+	const showNotification = (productName, quantity) => {
+  toast.success(
+    <div>
+      Se ha agregado <strong>{productName} ({quantity})</strong> a tu carrito.
+    </div>
+  );
+};
 
 	const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find((item) => item._id === product._id);
@@ -26,13 +35,14 @@ export const StateContext = ({ children }) => {
           quantity: cartProduct.quantity + quantity
         }
       })
-
       setCartItems(updatedCartItems);
     } else {
       product.quantity = quantity;
-      
       setCartItems([...cartItems, { ...product }]);
     }
+
+		showNotification(product.name, quantity);
+		//toast.success(`Se ha agregado ${product.name} (${quantity}) a tu carrito.`);
 
   } 
 
