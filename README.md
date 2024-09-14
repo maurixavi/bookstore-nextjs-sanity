@@ -2,6 +2,7 @@
 
 This is a full-stack book e-commerce application built with Next.js. It integrates with Sanity CMS for managing book data and Stripe for handling payments. Users can browse through books, add them to their cart, and complete purchases using Stripe.
 
+Check out the application [here](https://entrelibros-tienda.vercel.app).
 ## Features
 - **Product Browsing**: View a list of books with options to filter and search.
 - **Product Details**: See detailed information about each book.
